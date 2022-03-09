@@ -8,8 +8,8 @@ require 'vendor/autoload.php';
 use Class\Models\News;
 use Class\Models\Post;
 use Class\Models\Article;
-//var_dump($_SERVER['PHP_IDE_CONFIG']);
-//phpinfo();
+
+
 //$post = Post::find(14);
 //$posts = Post::findAll();
 //Post::remove(13);
@@ -33,7 +33,8 @@ $newsSingle->title = 'Saving Test001';
 $newsSingle->body = 'Saving Test001';
 $newsSingle->comment = 'Saving Test001';
 $test = $newsSingle->save();*/
-var_dump($test);
+//var_dump($test);
+
 
 //$news = News::findAll();
 //News::remove(13);
