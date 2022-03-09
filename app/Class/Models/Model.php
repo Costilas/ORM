@@ -27,13 +27,13 @@ abstract class Model
 
     private static function setStaticORM():void
     {
-        self::$orm = new Orm();
+        static::$orm = new Orm();
     }
 
     private static function getStaticORM(): object
     {
-        self::setStaticORM();
-        return self::$orm;
+        static::setStaticORM();
+        return static::$orm;
     }
 
     static public function find(int $id): Model
