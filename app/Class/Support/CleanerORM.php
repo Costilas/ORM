@@ -7,7 +7,7 @@ use ICanBoogie\Inflector;
 class CleanerORM
 {
 
-    static function getTableName(string $className): string
+    static function initTableName(string $className): string
     {
         return self::prepareTableName($className);
     }
@@ -23,6 +23,7 @@ class CleanerORM
     static function cleanClassName(string $className): string
     {
         $array = explode('\\', $className);
-        return $array[count($array) - 1];
+
+        return array_pop($array);
     }
 }

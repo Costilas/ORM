@@ -17,8 +17,6 @@ use Class\Models\Article;
 //var_dump($post);
 //var_dump($posts);
 
-
-
 //$article = Article::find(14);
 //$articles = Article::findAll();
 //Article::remove(13);
@@ -28,12 +26,12 @@ use Class\Models\Article;
 
 
 //$newsSingle = News::find(306);
-/*$newsSingle = new News();
+$newsSingle = new News();
 $newsSingle->title = 'Saving Test001';
 $newsSingle->body = 'Saving Test001';
 $newsSingle->comment = 'Saving Test001';
-$test = $newsSingle->save();*/
-//var_dump($test);
+$newsSingle->save();
+var_dump($newsSingle);
 
 
 //$news = News::findAll();

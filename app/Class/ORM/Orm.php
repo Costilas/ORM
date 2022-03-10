@@ -19,7 +19,7 @@ class Orm
 
     public function find(int $id, string $className): Model|null
     {
-        $table = CleanerORM::getTableName($className);
+        $table = CleanerORM::initTableName($className);
         $sql = QueryORM::formFindQuery($table);
 
         $statement = $this->db->pdo->prepare($sql);
@@ -35,9 +35,8 @@ class Orm
 
     public function findAll(string $className): array
     {
-        $table = CleanerORM::getTableName($className);
+        $table = CleanerORM::initTableName($className);
         $sql = QueryORM::formFindAllQuery($table);
-
 
         $statement = $this->db->pdo->prepare($sql);
         $statement->execute();
@@ -54,7 +53,7 @@ class Orm
         return $result;
     }
 
-    public function save(Model $model, string $className)
+    public function save(Model $model, string $className): bool
     {
         if (isset($model->id)) {
             return $this->update($model, $className);
@@ -64,7 +63,7 @@ class Orm
 
     public function remove(int $id, string $className): bool
     {
-        $table = CleanerORM::getTableName($className);
+        $table = CleanerORM::initTableName($className);
         $sql = QueryORM::formRemoveQuery($table, $id);
 
         return $this->db->pdo->exec($sql);
@@ -72,7 +71,7 @@ class Orm
 
     public function create(Model $model, string $className): bool
     {
-        $table = CleanerORM::getTableName($className);
+        $table = CleanerORM::initTableName($className);
         $sql = QueryORM::formCreateQuery($model, $table);
 
         $this->db->pdo->prepare($sql)->execute();
@@ -86,7 +85,7 @@ class Orm
 
     public function update(Model $model, string $className): bool
     {
-        $table = CleanerORM::getTableName($className);
+        $table = CleanerORM::initTableName($className);
         $query = QueryORM::formUpdateQuery($model, $table);
 
         $statement = $this->db->pdo->prepare($query['sql']);
